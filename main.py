@@ -43,7 +43,7 @@ print("load the model...")
 seed_everything(config['seed'])
 model = GPT2LMHeadModel.from_pretrained(config['model_name']).to(config['device'])
 model.resize_token_embeddings(vocab_size)
-max_len = min(config['max_len'], model.config.n_ctx)
+config['max_len'] = min(config['max_len'], model.config.n_ctx)
 
 if args.mode == 'train':
     print("this is the train mode")
