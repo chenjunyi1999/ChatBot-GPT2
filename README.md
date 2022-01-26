@@ -1,28 +1,28 @@
 # ChatBot-Pytorch
-A GPT-2 ChatBot implemented using Pytorch and Huggingface-transformers
+一个使用`Pytorch`和`Huggingface Transofrmers` 构建的 `gpt2` 聊天机器人
 
 
-## How to use
-1. **install the required packages**
+## 如何使用
+1. **安装依赖库**
 ```
 pip install -r requirements.txt
 ```
-2. **Download and process the data**
+2. **下载并处理数据集**
 ```
 python load_data.py
 ```
-3. **train the model**
+3. **训练模型**
 
-  &emsp; you can train the model from a initial state
+  &emsp; 你可以从初始状态训练一个模型
 ```
 python main.py --mode="train"
 ```
 
-  &emsp; also you can train a model from  a specific checkpoint (eg. best.ckpt)
+  &emsp; 你也可以从一个保存过后的`checkpoint`处开始训练(例如文件名为`best.ckpt`)
 ```
 python main.py --mode="train" --ckpt_name="best"
 ```
-4. **infer & interact**
+4. **推理和交互**
 ```
 python main.py --mode="infer" --ckpt_name="best"
 ```
