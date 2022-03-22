@@ -1,6 +1,6 @@
 # ChatBot-Pytorch
 ## 简介
-一个使用`Pytorch`和`Huggingface Transofrmers` 构建的 `gpt2` 聊天机器人 <br>
+一个使用`Pytorch`和`Huggingface Transofrmers` 构建的 `gpt2` 多轮聊天机器人 <br>
 
 ## 项目结构 
 `process_data.py` : 处理四个格式不同的数据集的一些方法 <br>
@@ -9,6 +9,7 @@
 `main.py` : 主函数<br>
 `trainer.py` : 定义模型训练与验证方法<br>
 `predictor.py` : 定义模型预测与交互方法<br>
+`evaluation.py`: 定义评估标准包括(Belu,Rouge, Distinct)<br>
 `settings.py` : 项目配置参数<br>
 `utils.py` : 工具类<br>
 
