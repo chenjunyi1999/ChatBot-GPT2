@@ -1,12 +1,12 @@
 import re
 import torch
 from nltk.translate.bleu_score import sentence_bleu
-from numpy import mean
 from sumeval.metrics.rouge import RougeCalculator
 from torch.nn import functional as F
 from settings import config
 from utils import seed_everything
 import numpy as np
+from settings import config
 
 punctuation = '.%!,;:?"\、，；'
 
@@ -69,14 +69,14 @@ class Evaluator():
 
         rouge = RougeCalculator(stopwords=True, lang="en")
 
-        bleu1_list = []
-        bleu2_list = []
-        bleu4_list = []
-        rouge1_list = []
-        rouge2_list = []
-        rougel_list = []
-        distinct1_list = []
-        distinct2_list = []
+        bleu1_total = 0.0
+        bleu2_total = 0.0
+        bleu4_total = 0.0
+        rouge1_total = 0.0
+        rouge2_total = 0.0
+        rougel_total = 0.0
+        distinct1_total = 0.0
+        distinct2_total = 0.0
 
         with torch.no_grad():
             for i, batch in enumerate(self.valid_loader):
@@ -103,31 +103,41 @@ class Evaluator():
                     candidate_l = removePunctuation(candidate).strip().split()
                     # print(reference_l)
                     # print(candidate_l)
-                    bleu1_list.append(sentence_bleu(reference_l, candidate_l, weights=(1, 0, 0, 0)))
-                    bleu2_list.append(sentence_bleu(reference_l, candidate_l, weights=(0.5, 0.5, 0, 0)))
-                    bleu4_list.append(sentence_bleu(reference_l, candidate_l, weights=(0.25, 0.25, 0.25, 0.25)))
-                    rouge1_list.append(rouge.rouge_n(reference, candidate, n=1))
-                    rouge2_list.append(rouge.rouge_n(reference, candidate, n=2))
-                    rougel_list.append(rouge.rouge_l(reference, candidate))
-                    distinct1_list.append(distinct(candidate, 1))
-                    distinct2_list.append(distinct(candidate, 1))
-                    # print(bleu1_list[-1])
-                    # print(bleu2_list[-1])
-                    # print(bleu4_list[-1])
-                    # print(rouge1_list[-1])
-                    # print(rouge2_list[-1])
-                    # print(rougel_list[-1])
-                    # print(distinct1_list[-1])
-                    # print(distinct2_list[-1])
+                    bleu1_cur = sentence_bleu(reference_l, candidate_l, weights=(1, 0, 0, 0))
+                    bleu2_cur = sentence_bleu(reference_l, candidate_l, weights=(0.5, 0.5, 0, 0))
+                    bleu4_cur = sentence_bleu(reference_l, candidate_l, weights=(0.25, 0.25, 0.25, 0.25))
+                    rouge1_cur = rouge.rouge_n(reference, candidate, n=1)
+                    rouge2_cur = rouge.rouge_n(reference, candidate, n=2)
+                    rougel_cur = rouge.rouge_l(reference, candidate)
+                    distinct1_cur = distinct(candidate, 1)
+                    distinct2_cur = distinct(candidate, 1)
+
+                    bleu1_total += bleu1_cur
+                    bleu2_total += bleu2_cur
+                    bleu4_total += bleu4_cur
+                    rouge1_total += rouge1_cur
+                    rouge2_total += rouge2_cur
+                    rougel_total += rougel_cur
+                    distinct1_total += distinct1_cur
+                    distinct2_total += distinct2_cur
+
+                    # print(bleu1_cur)
+                    # print(bleu2_cur)
+                    # print(bleu4_cur)
+                    # print(rouge1_cur)
+                    # print(rouge2_cur)
+                    # print(rougel_cur)
+                    # print(distinct1_cur)
+                    # print(distinct2_cur)
         print("final evaluation results (contains:bleu/rouge/distinct...) ")
-        print(mean(bleu1_list))
-        print(mean(bleu2_list))
-        print(mean(bleu4_list))
-        print(mean(rouge1_list))
-        print(mean(rouge2_list))
-        print(mean(rougel_list))
-        print(mean(distinct1_list))
-        print(mean(distinct2_list))
+        print(bleu1_total/(len(self.valid_loader)*config['batch_size']))
+        print(bleu2_total/(len(self.valid_loader)*config['batch_size']))
+        print(bleu4_total/(len(self.valid_loader)*config['batch_size']))
+        print(rouge1_total/(len(self.valid_loader)*config['batch_size']))
+        print(rouge2_total/(len(self.valid_loader)*config['batch_size']))
+        print(rougel_total/(len(self.valid_loader)*config['batch_size']))
+        print(distinct1_total/(len(self.valid_loader)*config['batch_size']))
+        print(distinct2_total/(len(self.valid_loader)*config['batch_size']))
 
         # top-k核采样 （beam search的改进版本）
 
