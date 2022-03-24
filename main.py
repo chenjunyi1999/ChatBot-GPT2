@@ -2,6 +2,7 @@ from settings import config
 from utils import seed_everything
 from trainer import Trainer
 from predictor import Predictor
+from evaluator import Evaluator
 from mydataset import *
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, get_polynomial_decay_schedule_with_warmup
 import torch
@@ -98,5 +99,28 @@ elif args.mode == 'infer':
             exit()
     predictor = Predictor(tokenizer,model,vocab)
     predictor.infer()
+
+elif args.mode == 'evaluate':
+    print("this is the evaluation mode")
+    valid_set = CustomDataset(config['valid_prefix'], config)
+    ppd = PadCollate(eos_id=config['eos_id'])
+    valid_loader = DataLoader(valid_set,
+                            collate_fn=ppd.pad_collate,
+                            shuffle=True,
+                            batch_size=config['batch_size'],
+                            num_workers=config['num_workers'],
+                            pin_memory=True
+                            )
+    if args.ckpt_name is not None:
+        if os.path.exists(f"{config['ckpt_dir']}/{args.ckpt_name}.ckpt"):
+            print("Loading the pre-trained checkpoint...")
+            ckpt = torch.load(f"{config['ckpt_dir']}/{args.ckpt_name}.ckpt", map_location=config['device'])
+            model.load_state_dict(ckpt['model_state_dict'])
+        else:
+            print("Can't evaluation!")
+            exit()
+    evaluator = Evaluator(tokenizer,model,vocab, valid_loader)
+    evaluator.evaluate()
+
 else:
     print("mode error!")
