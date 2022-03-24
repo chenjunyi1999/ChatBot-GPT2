@@ -9,7 +9,7 @@
 `main.py` : 主函数<br>
 `trainer.py` : 定义模型训练与验证方法<br>
 `predictor.py` : 定义模型预测与交互方法<br>
-`evaluator.py`: 定义评估标准包括(Bleu,Rouge, Distinct)  😭代码洗的不好有点慢<br>
+`evaluator.py`: 定义评估标准包括(Bleu,Rouge, Distinct)  😭代码写不好有点慢<br>
 `settings.py` : 项目配置参数<br>
 `utils.py` : 工具类<br>
 
