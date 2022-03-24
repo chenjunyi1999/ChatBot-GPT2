@@ -9,7 +9,7 @@
 `main.py` : 主函数<br>
 `trainer.py` : 定义模型训练与验证方法<br>
 `predictor.py` : 定义模型预测与交互方法<br>
-`evaluator.py`: 定义评估标准包括(Bleu,Rouge, Distinct)  **TBD**<br>
+`evaluator.py`: 定义评估标准包括(Bleu,Rouge, Distinct)  😭代码洗的不好有点慢<br>
 `settings.py` : 项目配置参数<br>
 `utils.py` : 工具类<br>
 
@@ -37,7 +37,11 @@ python main.py --mode="train"
 ```
 python main.py --mode="train" --ckpt_name="best"
 ```
-4. **推理和交互**
+4. **模型评估**
+```
+python main.py --mode="evaluate" --ckpt_name="best"
+```
+5. **推理和交互**
 ```
 python main.py --mode="infer" --ckpt_name="best"
 ```
