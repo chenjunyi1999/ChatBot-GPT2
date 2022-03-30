@@ -1,4 +1,4 @@
-# ChatBot-Pytorch
+# ChatBot_GPT2
 ## 简介
 一个使用`Pytorch`和`Huggingface Transofrmers` 构建的 `gpt2` 多轮聊天机器人 <br>
 
