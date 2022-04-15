@@ -21,5 +21,5 @@ config = {
     'sp1_token': '<sp1>',
     'sp2_token': '<sp2>',
     'end_command': 'Abort!',
-    'top_p':0.8
+    'top_p':0.9
 }
