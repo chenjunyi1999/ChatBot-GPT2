@@ -16,7 +16,7 @@
 ## 如何使用
 0. **项目笔记**
 
-如果有任何疑问🤔️可以参考项目笔记 🤖️[项目笔记传送门](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/ChatBot-pytorch%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
+如果有任何疑问🤔️可以参考项目笔记 🤖️[项目笔记传送门](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Code_Notes/ChatBot-GPT2%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
  
 1. **安装依赖库**
 ```
