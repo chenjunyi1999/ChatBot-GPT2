@@ -9,16 +9,13 @@
 `main.py` : 主函数<br>
 `trainer.py` : 定义模型训练与验证方法<br>
 `predictor.py` : 定义模型预测与交互方法<br>
-`evaluator.py`: 定义评估标准包括(Bleu,Rouge, Distinct)  😭代码写不好有点慢<br>
+`evaluator.py`: 定义评估标准包括(Bleu,Rouge, Distinct) <br>
 `settings.py` : 项目配置参数<br>
 `utils.py` : 工具类<br>
 
 ## 如何使用
-0. **项目笔记**
-
-如果有任何疑问🤔️可以参考项目笔记 🤖️[项目笔记传送门](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Code_Notes/ChatBot-GPT2%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
  
-1. **安装依赖库**
+ 1. **安装依赖库**
 ```
 pip install -r requirements.txt
 ```
@@ -47,10 +44,9 @@ python main.py --mode="infer" --ckpt_name="best"
 ```
 
 ## 参考
-1. [huggingface/transfer-learning-conv-ai](https://github.com/huggingface/transfer-learning-conv-ai)
-
-2. [🦄 How to build a State-of-the-Art Conversational AI with Transfer Learning](https://medium.com/huggingface/how-to-build-a-state-of-the-art-conversational-ai-with-transfer-learning-2d818ac26313)
-
-3. [devjwsong/gpt2-dialogue-generation-pytorch](https://github.com/devjwsong/gpt2-dialogue-generation-pytorch)
+1. [ChatBot_GPT2笔记心得](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Code_Notes/ChatBot-GPT2%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
+2. [huggingface/transfer-learning-conv-ai](https://github.com/huggingface/transfer-learning-conv-ai)
+3. [🦄 How to build a State-of-the-Art Conversational AI with Transfer Learning](https://medium.com/huggingface/how-to-build-a-state-of-the-art-conversational-ai-with-transfer-learning-2d818ac26313)
+4. [devjwsong/gpt2-dialogue-generation-pytorch](https://github.com/devjwsong/gpt2-dialogue-generation-pytorch)
 
 
