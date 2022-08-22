@@ -201,12 +201,13 @@ def load_blended(tokenizer, train_frac):
     total_free_messages = data_train['free_messages'] + data_valid['free_messages'] + data_test['free_messages']
     total_guided_messages = data_train['guided_messages'] + data_valid['guided_messages'] + data_test['guided_messages']
 
+    total_dialogues = []
+
     for i, free_message in enumerate(tqdm(total_free_messages)):
         free_message_list = [utter.strip() for utter in free_message if len(utter.strip()) > 0]
         guided_message_list = [utter.strip() for utter in total_guided_messages[i] if len(utter.strip()) > 0]
         dialogue = total_previous_utterance[i]
 
-        total_dialogues = []
         for j in range(len(free_message_list)):
             token_list = tokenizer.tokenize(free_message_list[j])
             token_list = process_token_list(token_list)
