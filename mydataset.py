@@ -30,9 +30,9 @@ class CustomDataset(Dataset):
                     start = max(0, h - config['max_turns'] + 1)
                     for s in range(start, h):
                         contexts = hists[s:h + 1]
-                        if len(contexts) > config['max_turns']:
-                            num_exceeded = len(contexts) - config['max_turns']
-                            contexts = contexts[num_exceeded:]
+                        # if len(contexts) > config['max_turns']:
+                        #     num_exceeded = len(contexts) - config['max_turns']
+                        #     contexts = contexts[num_exceeded:]
                         if len(contexts) < 2:
                             break
 

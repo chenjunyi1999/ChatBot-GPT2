@@ -34,7 +34,7 @@ class Predictor():
                 input_hists.append(input_ids)
 
                 if len(input_hists) >= config['max_turns']:
-                    num_exceeded = len(input_hists) - config['max_turns']
+                    num_exceeded = len(input_hists) - config['max_turns']+1
                     input_hists = input_hists[num_exceeded:]
 
                 input_ids = [self.bos_id] + list(chain.from_iterable(input_hists)) + [self.sp2_id]
