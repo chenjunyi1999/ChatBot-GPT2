@@ -20,18 +20,13 @@ def merge_data(tokenizer, config):
     for data_name in dataset_list:
         print(f"Processing {data_name}...")
         if data_name == 'daily_dialog':
-            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_daily(tokenizer, config[
-                'train_frac'])
+            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_daily(tokenizer, config['train_frac'])
         elif data_name == 'empathetic_dialogues':
-            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_empathetic(tokenizer,
-                                                                                                         config[
-                                                                                                             'train_frac'])
+            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_empathetic(tokenizer, config['train_frac'])
         elif data_name == 'persona_chat':
-            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_persona(tokenizer, config[
-                'train_frac'])
+            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_persona(tokenizer, config['train_frac'])
         elif data_name == 'blended_skill_talk':
-            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_blended(tokenizer, config[
-                'train_frac'])
+            part_train_dialogues, part_valid_dialogues, part_num_train, part_num_valid = load_blended(tokenizer, config['train_frac'])
 
         train_dialogues += part_train_dialogues
         valid_dialogues += part_valid_dialogues
