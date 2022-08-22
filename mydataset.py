@@ -27,7 +27,8 @@ class CustomDataset(Dataset):
 
             for h in range(len(hists)):
                 if hists[h][0] == config['sp2_id']:
-                    for s in range(0, h):
+                    start = max(0, h - config['max_turns'] + 1)
+                    for s in range(start, h):
                         contexts = hists[s:h + 1]
                         if len(contexts) > config['max_turns']:
                             num_exceeded = len(contexts) - config['max_turns']
