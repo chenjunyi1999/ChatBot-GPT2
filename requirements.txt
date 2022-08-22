@@ -3,3 +3,4 @@ transformers==4.12.5
 datasets==1.16.1
 tensorboard==2.7.0
 sumeval==0.2.2
+nltk==3.5
