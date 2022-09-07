@@ -106,9 +106,9 @@ class Evaluator():
                     bleu1_cur = sentence_bleu(reference_l, candidate_l, weights=(1, 0, 0, 0))
                     bleu2_cur = sentence_bleu(reference_l, candidate_l, weights=(0.5, 0.5, 0, 0))
                     bleu4_cur = sentence_bleu(reference_l, candidate_l, weights=(0.25, 0.25, 0.25, 0.25))
-                    rouge1_cur = rouge.rouge_n(reference, candidate, n=1)
-                    rouge2_cur = rouge.rouge_n(reference, candidate, n=2)
-                    rougel_cur = rouge.rouge_l(reference, candidate)
+                    rouge1_cur = rouge.rouge_n(candidate, reference, n=1)
+                    rouge2_cur = rouge.rouge_n(candidate, reference, n=2)
+                    rougel_cur = rouge.rouge_l(candidate, reference)
                     distinct1_cur = distinct(candidate, 1)
                     distinct2_cur = distinct(candidate, 1)
 
