@@ -44,7 +44,7 @@ python main.py --mode="infer" --ckpt_name="best"
 ```
 
 ## 参考
-1. [ChatBot-GPT2总结](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Code_Notes/ChatBot-GPT2%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
+1. [ChatBot-GPT2总结](https://github.com/chenjunyi1999/ML-Tutorial/tree/main/Project_Notes/ChatBot-GPT2%E9%A1%B9%E7%9B%AE%E7%AC%94%E8%AE%B0)
 2. [huggingface/transfer-learning-conv-ai](https://github.com/huggingface/transfer-learning-conv-ai)
 3. [🦄 How to build a State-of-the-Art Conversational AI with Transfer Learning](https://medium.com/huggingface/how-to-build-a-state-of-the-art-conversational-ai-with-transfer-learning-2d818ac26313)
 4. [devjwsong/gpt2-dialogue-generation-pytorch](https://github.com/devjwsong/gpt2-dialogue-generation-pytorch)
