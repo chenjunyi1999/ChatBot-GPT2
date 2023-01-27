@@ -10,6 +10,8 @@ import sys
 
 class Trainer():
     def __init__(self,model,optim,sched,args,train_loader,valid_loader,writer):
+         # This Is Here If You You Need To Load A CPU Trained Model Using GPU Remove It If Need Be And Replace map location with this map_location=config['device'])
+        device_fix = torch.device("cpu")
         self.model = model
         self.optim = optim
         self.sched = sched
@@ -22,7 +24,7 @@ class Trainer():
         if self.args.ckpt_name is not None:
             if os.path.exists(f"{config['ckpt_dir']}/{self.args.ckpt_name}.ckpt"):
                 print("Loading the pre-trained checkpoint...")
-                ckpt = torch.load(f"{config['ckpt_dir']}/{self.args.ckpt_name}.ckpt", map_location=config['device'])
+                ckpt = torch.load(f"{config['ckpt_dir']}/{self.args.ckpt_name}.ckpt", map_location=device_fix)
                 self.model.load_state_dict(ckpt['model_state_dict'])
                 self.optim.load_state_dict(ckpt['optim_state_dict'])
                 self.sched.load_state_dict(ckpt['sched_state_dict'])
@@ -88,6 +90,7 @@ class Trainer():
             # 如果当前的验证集损失比之前所有的都好 跟新best_loss 并保存当前的模型
             if valid_loss < self.best_loss:
                 self.best_loss = valid_loss
+           # if epoch % 4500 == 0:              Save Checkpoint After Every 4500 Epochs
                 state_dict = {
                     'model_state_dict': self.model.state_dict(),
                     'optim_state_dict': self.optim.state_dict(),
